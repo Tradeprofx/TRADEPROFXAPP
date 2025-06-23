@@ -25,13 +25,6 @@ const platform_config: TPlatformConfig[] = [
         description: () => localize('Automated trading at your fingertips. No coding needed.'),
         href: routes.bot,
     },
-    {
-        icon: getPlatformSettings('smarttrader').icon,
-        title: () => getPlatformSettings('smarttrader').name,
-        name: getPlatformSettings('smarttrader').name,
-        description: () => localize('Trade the world’s markets with our popular user-friendly platform.'),
-        href: routes.smarttrader,
-    },
 ];
 
 export default platform_config;
