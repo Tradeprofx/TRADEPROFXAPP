@@ -15,19 +15,20 @@ export const livechat_client_id = '66aa088aad5a414484c1fd1fa8a5ace7';
 
 export const domain_app_ids = {
     // these domains as supported "production domains"
-    'deriv.app': 16929, // TODO: [app-link-refactor] - Remove backwards compatibility for `deriv.app`
-    'app.deriv.com': 16929,
-    'staging-app.deriv.com': 16303,
-    'app.deriv.me': 1411,
-    'staging-app.deriv.me': 1411, // TODO: setup staging for deriv.me
-    'app.deriv.be': 30767,
-    'staging-app.deriv.be': 31186,
-    'binary.com': 1,
-    'test-app.deriv.com': 51072,
+    'deriv.app': 80074, // Your registered app ID
+    'app.deriv.com': 80074, // Your registered app ID
+    'staging-app.deriv.com': 80074, // Your registered app ID
+    'app.deriv.me': 80074, // Your registered app ID
+    'staging-app.deriv.me': 80074, // Your registered app ID
+    'app.deriv.be': 80074, // Your registered app ID
+    'staging-app.deriv.be': 80074, // Your registered app ID
+    'binary.com': 80074, // Your registered app ID
+    'test-app.deriv.com': 80074, // Your registered app ID
+    'tradeprofxapp.pages.dev': 80074, // Your domain with your app ID
 };
 
 export const platform_app_ids = {
-    derivgo: 23789,
+    derivgo: 80074, // Your registered app ID
 };
 
 export const getCurrentProductionDomain = () =>
@@ -50,7 +51,7 @@ export const isLocal = () => /localhost(:\d+)?$/i.test(window.location.hostname)
  */
 export const getAppId = () => {
     let app_id = null;
-    const user_app_id = ''; // you can insert Application ID of your registered application here
+    const user_app_id = '80074'; // Your registered Application ID
     const config_app_id = window.localStorage.getItem('config.app_id');
     const current_domain = getCurrentProductionDomain() || '';
     window.localStorage.removeItem('config.platform'); // Remove config stored in localstorage if there's any.
@@ -66,12 +67,12 @@ export const getAppId = () => {
         app_id = user_app_id;
     } else if (isStaging()) {
         window.localStorage.removeItem('config.default_app_id');
-        app_id = is_bot ? 19112 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 16303; // it's being used in endpoint chrome extension - please do not remove
+        app_id = is_bot ? 80074 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 80074; // Your app ID
     } else if (/localhost/i.test(window.location.hostname)) {
-        app_id = 36300;
+        app_id = 80074; // Your app ID for localhost
     } else {
         window.localStorage.removeItem('config.default_app_id');
-        app_id = is_bot ? 19111 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 16929;
+        app_id = is_bot ? 80074 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 80074; // Your app ID
     }
 
     return app_id;
