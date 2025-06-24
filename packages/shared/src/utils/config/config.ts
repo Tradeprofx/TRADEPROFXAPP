@@ -14,21 +14,21 @@ export const livechat_license_id = 12049137;
 export const livechat_client_id = '66aa088aad5a414484c1fd1fa8a5ace7';
 
 export const domain_app_ids = {
-    // these domains as supported "production domains"
-    'deriv.app': 80074, // Your registered app ID
-    'app.deriv.com': 80074, // Your registered app ID
-    'staging-app.deriv.com': 80074, // Your registered app ID
-    'app.deriv.me': 80074, // Your registered app ID
-    'staging-app.deriv.me': 80074, // Your registered app ID
-    'app.deriv.be': 80074, // Your registered app ID
-    'staging-app.deriv.be': 80074, // Your registered app ID
-    'binary.com': 80074, // Your registered app ID
-    'test-app.deriv.com': 80074, // Your registered app ID
-    'tradeprofxapp.pages.dev': 80074, // Your domain with your app ID
+    // these domains as supported "production domains" - KEEP ORIGINAL IDs
+    'deriv.app': 16929, // Original Deriv app ID
+    'app.deriv.com': 16929, // Original Deriv app ID
+    'staging-app.deriv.com': 16303, // Original staging ID
+    'app.deriv.me': 1411, // Original deriv.me ID
+    'staging-app.deriv.me': 1411, // Original staging deriv.me ID
+    'app.deriv.be': 30767, // Original deriv.be ID
+    'staging-app.deriv.be': 31186, // Original staging deriv.be ID
+    'binary.com': 1, // Original binary.com ID
+    'test-app.deriv.com': 51072, // Original test ID
+    'tradeprofxapp.pages.dev': 80074, // YOUR domain with YOUR app ID
 };
 
 export const platform_app_ids = {
-    derivgo: 80074, // Your registered app ID
+    derivgo: 23789, // Keep original derivgo ID
 };
 
 export const getCurrentProductionDomain = () =>
@@ -67,12 +67,12 @@ export const getAppId = () => {
         app_id = user_app_id;
     } else if (isStaging()) {
         window.localStorage.removeItem('config.default_app_id');
-        app_id = is_bot ? 80074 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 80074; // Your app ID
+        app_id = is_bot ? 19112 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 16303; // Original staging logic
     } else if (/localhost/i.test(window.location.hostname)) {
-        app_id = 80074; // Your app ID for localhost
+        app_id = 36300; // Original localhost ID
     } else {
         window.localStorage.removeItem('config.default_app_id');
-        app_id = is_bot ? 80074 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 80074; // Your app ID
+        app_id = is_bot ? 19111 : domain_app_ids[current_domain as keyof typeof domain_app_ids] || 16929; // Original production logic
     }
 
     return app_id;
